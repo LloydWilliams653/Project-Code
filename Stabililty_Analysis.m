@@ -3,6 +3,7 @@
 % Constants:
 len = 100; % Domain size
 
+
 syms P W O R k1 k2 c g d rW w0 alpha L
 
 % Homogeneous equations:
