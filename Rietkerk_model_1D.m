@@ -1,5 +1,6 @@
 % 1D_Rietkerk_model
-tic 
+% NOTE: Must run stability analysis code prior to this!
+
 % clear
 % Constants:
 g = 0.05; 
@@ -14,19 +15,19 @@ DP = 0.1;
 DW = 0.1;
 DO = 100; 
 
-% P biomass, W Soil water, O Surface water
 
 % Vary rainfall:
-R = 1.2;
+R = 1.2; % Rainfall
+len = 100; % Domain size
 
 % time step
-len = 100;
+
 dx = 1;
 N = len/dx;
 T = 4000; % total time 
 dt = 0.0005; % time step
 n = floor(T / dt); % number of iterations
- % 1:n/8:n
+
 
 
 % Initial Conditions
@@ -126,7 +127,7 @@ ylim([-0.1, 20])
 PWO_IC = PWO; % store the last values
 
 
-toc
+
 % Equilibria plots
 syms Rain
 
@@ -159,15 +160,12 @@ set(gca, 'FontSize', 15)
 ylabel('Biomass, P', 'FontSize', 24)
 xlabel('Rainfall, R', 'FontSize', 24)
 
-%% test
-plot(0.8, max_P_tempsave, 'x', 'MarkerSize', 20, 'LineWidth', 3, 'Color', 'r')
-plot(0.8, Biomass_tempsave, 'x', 'MarkerSize', 20, 'LineWidth', 3, 'Color', 'g')
 
 
 
 
 
-%% Equilibria plots
+% Equilibria plots
 % Soil water
 figure
 fplot(Wneq, [k1*rW*d/(c*g - d), 3], 'LineWidth', 2, 'Color', 'b')
