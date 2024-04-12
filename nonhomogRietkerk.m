@@ -1,12 +1,15 @@
 % 1D_Rietkerk_model plotting the non-homogeneous solutions
-% Need to run stability analysis code prior to this
+% NOTE: Must run stability analysis code prior to this!
 % len = 100 & Rainfall_drop = 0.01 ~ 13.5 hours
 % len = 100 & Rainfall_drop = 0.40 ~ 25 minutes
 % len = 200 & Rainfall_drop = 0.01 ~ 17 hours
 % len = 200 & Rainfall_drop = 0.40 ~ 33 minutes
 
+len = 100; % Domain size, 100m 
+% Uncomment to test a domain of 200m:
+% len = 200; % Domain size 200m
 
-tic 
+n_wave = 2; % Wavenumber, n
 
 % Constants:
 g = 0.05;
@@ -30,7 +33,6 @@ R = Initial_rain;
 
 
 % time step
-len = 200; % Domain size [m]
 dx = 1;
 N = len/dx;
 T = 4000; % total time 
@@ -69,7 +71,7 @@ J2 = ceil(abs(R-max_R)/Rainfall_drop);
 
 
 % Spatial frequency n = 2;
-L =  2*2*pi/len;
+L =  n_wave*2*pi/len;
 sigma = h11(R, L);
 
 
@@ -242,7 +244,7 @@ Biomass(:,j2+j-1) = [R;trapz(PWO(1,:))]; % store area under the biomass curve
 
 end
 
-%%
+
 num_colors = 256;
 custom_colormap = [linspace(1,0,num_colors)', linspace(1, 0.5, num_colors)', linspace(1,0,num_colors)']; 
 
@@ -303,7 +305,7 @@ plot(Biomass(1,:), Biomass(2,:)/len, '-x', 'MarkerSize', 10, 'LineWidth', 3, 'Co
 
 
 
-toc
+
 
 % Rainfall in time plot
 R = Initial_rain;
