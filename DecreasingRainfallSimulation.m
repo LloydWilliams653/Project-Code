@@ -9,6 +9,12 @@ len = 100; % Domain size, 100m
 % Uncomment to test a domain of 200m:
 % len = 200; % Domain size 200m
 
+% 0.01, 0.4
+Rainfall_drop = 0.01; % Change in rainfall after T
+
+% Uncomment to test a rainfall change of 0.4:
+% Rainfall_drop = 0.4; % Change in rainfall after T
+
 n_wave = 2; % Wavenumber, n
 
 % Constants:
@@ -52,8 +58,7 @@ O = R/alpha * (P + k2)./(P + (k2*w0));
 xplot = 0:dx:len-dx;
 
 
-% 0.01, 0.4
-Rainfall_drop = 0.4; % Change in rainfall after T
+
 
 % Range of R value to vary
 min_R = 0;
